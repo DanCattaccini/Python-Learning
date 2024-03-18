@@ -27,19 +27,19 @@ livros = [
     },
 ]
 
-#Consultar(todos)
+#Consult(todos)
 @app.route('/livros', methods=['GET'])
 def obter_livros():
     return jsonify(livros)
 
-#Consultar(id)
+#Consult(id)
 @app.route('/livros/<int:id>', methods=['GET'])
 def obter_livro_por_id(id):
     for livro in livros:
         if livro.get('id') == id:
             return jsonify(livro) 
 
-#Editar
+#Edit
 @app.route('/livros/<int:id>, methods=[PUT]')
 def editar_livro_por_id(id):
     livro_alterado = request.get_json()
@@ -48,7 +48,7 @@ def editar_livro_por_id(id):
             livros[indice].update(livro_alterado)
             return jsonify(livros[indice])
 
-#Criar
+#Create
 @app.route('/livros/<int:id>, methods=[POST]')
 def incluir_novo_livro():
     novo_livro = request.get_json()
@@ -56,7 +56,7 @@ def incluir_novo_livro():
 
     return jsonify(livros)
 
-#Excluir
+#Exclude
 @app.route('/livros/<int:id>, methods=[DELETE]')
 def excluir_livro(id):
     for indice, livro in enumerate(livros):
